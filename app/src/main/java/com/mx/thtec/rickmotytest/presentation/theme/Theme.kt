@@ -1,4 +1,4 @@
-package com.mx.thtec.rickmotytest.ui.theme
+package com.mx.thtec.rickmotytest.presentation.theme
 
 import android.app.Activity
 import android.os.Build
