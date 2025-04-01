@@ -1,4 +1,4 @@
-package com.mx.thtec.rickmotytest.ui.theme
+package com.mx.thtec.rickmotytest.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
