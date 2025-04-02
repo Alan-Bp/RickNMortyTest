@@ -21,18 +21,27 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Provides
-    @Singleton
-    fun provideRetrofit(): Retrofit =
-        Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().build()))
-            .build()
 
     @Provides
     @Singleton
-    fun provideRickAndMortyApi(retrofit: Retrofit): RickAndMortyApi =
-        retrofit.create(RickAndMortyApi::class.java)
+    fun provideMoshi(): Moshi = Moshi.Builder()
+        .add(com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory())
+        .build()
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(moshi: Moshi): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRickAndMortyApi(retrofit: Retrofit): RickAndMortyApi {
+        return retrofit.create(RickAndMortyApi::class.java)
+    }
 
     @Provides
     @Singleton

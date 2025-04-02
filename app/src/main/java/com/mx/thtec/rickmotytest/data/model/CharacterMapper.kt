@@ -10,7 +10,7 @@ fun Personajes.toDomain(): CharacterDomain {
         species = species,
         gender = gender,
         origin = origin.name,
-        location = location,
+        location = location.toString(),
         image = image
     )
 }

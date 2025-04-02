@@ -17,8 +17,9 @@ class CharacterRepository @Inject constructor(
     }
 
     suspend fun getCharacters(): List<CharacterDomain> {
+        val response = api.getAllCharacters()
+        val characters = response.results
         return try {
-            val characters = api.getAllCharacters()
             Log.d(TAG, "Obtenidos ${characters.size} personajes desde API")
             characterDao.insertAll(characters)
             Log.d(TAG, "Guardados en BD local")
@@ -27,7 +28,7 @@ class CharacterRepository @Inject constructor(
             Log.e(TAG, "Error en API: ${e.message}")
             val local = characterDao.getAllCharacters()
             Log.d(TAG, "Recuperados ${local.size} desde BD local")
-            local.map { it.toDomain() }
+            characters.map { it.toDomain() }
         }
     }
 
