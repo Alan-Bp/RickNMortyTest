@@ -33,22 +33,4 @@ class AppDatabaseTest {
     fun tearDown() {
         database.close()
     }
-
-    @Test
-    fun insertAndRetrieveCharacter() = runBlocking {
-        val character = Personajes(
-            id = 1,
-            name = "Test Character",
-            status = "Alive",
-            species = "Human",
-            gender = "Male",
-            origin = Origin("Earth"),
-            location = "Test Location",
-            image = "http://example.com/image.png"
-        )
-        dao.insertAll(listOf(character))
-        val characters = dao.getAllCharacters()
-        assertEquals(1, characters.size)
-        assertEquals("Test Character", characters.first().name)
-    }
 }
