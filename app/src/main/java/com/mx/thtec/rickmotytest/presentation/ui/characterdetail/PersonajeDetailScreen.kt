@@ -26,6 +26,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.mx.thtec.rickmotytest.R
 import com.mx.thtec.rickmotytest.presentation.viewmodel.CharacterViewModel
+import com.mx.thtec.rickmotytest.util.Constants.CARD_WIDTH_RATIO
 
 
 @Composable
@@ -48,7 +49,7 @@ fun PersonajeDetailScreen(
         ) {
             Card(
                 modifier = Modifier
-                    .fillMaxWidth(0.9f)
+                    .fillMaxWidth(CARD_WIDTH_RATIO)
                     .background(color = colorResource(id = R.color.th_gold))
                     .padding(16.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
