@@ -10,7 +10,6 @@ import com.mx.thtec.rickmotytest.presentation.theme.RickMotyTestTheme
 import com.mx.thtec.rickmotytest.presentation.ui.navigation.AppNavGraph
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

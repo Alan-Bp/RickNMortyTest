@@ -12,10 +12,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mx.thtec.rickmotytest.domain.model.CharacterDomain
 import com.mx.thtec.rickmotytest.presentation.viewmodel.CharacterViewModel
+import com.mx.thtec.rickmotytest.util.Constants.GRID_SPACING
+import com.mx.thtec.rickmotytest.util.Constants.LIST_SIX
+import com.mx.thtec.rickmotytest.util.Constants.SCREEN_PADDING
+import com.mx.thtec.rickmotytest.util.Constants.THREE_GRID_COLUMNS
 
 @Composable
 fun PersonajesListScreen(
@@ -29,13 +32,13 @@ fun PersonajesListScreen(
     }
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
-        contentPadding = PaddingValues(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        columns = GridCells.Fixed(THREE_GRID_COLUMNS),
+        contentPadding = PaddingValues(GRID_SPACING),
+        verticalArrangement = Arrangement.spacedBy(GRID_SPACING),
+        horizontalArrangement = Arrangement.spacedBy(GRID_SPACING),
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(SCREEN_PADDING)
     ) {
         items(personajes) { personaje ->
             PersonajeCard(personaje = personaje, onClick = { onPersonajeClick(personaje.id) })
@@ -47,7 +50,7 @@ fun PersonajesListScreen(
 fun PersonajesListScreenPreview(
     onPersonajeClick: (Int) -> Unit = {}
 ) {
-    val fakePersonajes = List(6) { index ->
+    val fakePersonajes = List(LIST_SIX) { index ->
         CharacterDomain(
             id = index + 1,
             name = "Character $index",
@@ -61,13 +64,13 @@ fun PersonajesListScreenPreview(
     }
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
-        contentPadding = PaddingValues(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        columns = GridCells.Fixed(THREE_GRID_COLUMNS),
+        contentPadding = PaddingValues(GRID_SPACING),
+        verticalArrangement = Arrangement.spacedBy(GRID_SPACING),
+        horizontalArrangement = Arrangement.spacedBy(GRID_SPACING),
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(SCREEN_PADDING)
     ) {
         items(fakePersonajes) { personaje ->
             PersonajeCard(personaje = personaje, onClick = { onPersonajeClick(personaje.id) })
